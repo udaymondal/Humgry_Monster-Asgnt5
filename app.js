@@ -10,8 +10,15 @@ const displayMeal = meals =>{
     const mealContainer = document.getElementById('mealContainer');
     mealContainer.innerHTML = '';
     meals.forEach(meal => {
+        console.log(meal);
         const mealDiv = document.createElement('div');
-        mealDiv.className = '';
-        console.log(meal.strMeal);
-    });
+        mealDiv.className = 'col-md-3';
+        mealDiv.innerHTML = ` 
+        <div onclick="displayIngredients('')" class="border rounded text-center h-100">
+            <img class="img-fluid rounded-top" src="${meal.strMealThumb}" alt="">
+            <h4 class="h5 py-4 px-2 mb-0">${meal.strMeal}</h4>
+        </div>
+        `
+        mealContainer.appendChild(mealDiv);
+    })
 }

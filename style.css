@@ -1,6 +1,14 @@
-.backpic{
+/* .backpic{
     background-color: lightgoldenrodyellow;
-    height: 650px;
+    height: auto;
+} */
+
+body{
+    background-color: goldenrod;
+    color: #ffffff;
+
+    background-size: 100%;
+    background-position: top;
 }
 
 #logo{
