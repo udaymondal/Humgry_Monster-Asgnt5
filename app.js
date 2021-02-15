@@ -3,7 +3,8 @@ const searchMeal = ()=>{
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${serachText}`;
     fetch(url)
     .then(res => res.json())
-    .then(data => displayMeal(data.meals));
+    .then(data => displayMeal(data.meals))
+    .catch(error => displayError("Sorry, Not Found! Please try again"));
 }
 
 const displayMeal = meals =>{
@@ -35,11 +36,27 @@ const displayIngredients = ingredients =>{
     const mealIngredients = [];
     let j= 0;
     for (let key in ingredients){
-        // console.log(key);
+        //console.log(key);
         j++;
         const ingredient = `strIngredient${j}`;    // j increamrnting $j{[++++]}
         mealIngredients.push(ingredients[ingredient]);
     }
-    console.log(mealIngredients);
+    const mealIngredientsCopy = [...mealIngredients]
+    if(mealIngredientsCopy!== null){
+    //console.log(...mealIngredients);
+
+    const h3 = document.getElementById('list');
+    
+    h3.innerText = `
+    
+    The Ingredients are: 
+    
+    ${mealIngredients}`;
+    }
 }
-//obj keyf
+
+
+const displayError = error=>{
+    const errorTag = document.getElementById('errorMessage');
+    errorTag.innerText = error;
+}
